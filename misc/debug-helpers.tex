@@ -1,0 +1,5 @@
+\def\showcatcodes#1{%
+  \ifx#1\relax\else
+    Char: \meaning#1, catcode: \the\catcode`#1^^J
+    \expandafter\showcatcodes
+  \fi}

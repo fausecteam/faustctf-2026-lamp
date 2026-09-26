@@ -1,0 +1,22 @@
+# Human-readable name of the service
+name: lamp
+# Name of the service for usage in paths, usernames etc.: Should only consist of lowercase alphanumeric
+# characters, must be identical to the (URL) project name of the GitLab repo
+slug: lamp
+authors:
+  - Yvonne Kothmeier <yvonne@kothmeier.me>
+
+install:
+  container_images:
+    - faust.cs.fau.de:5000/lamp
+    - redis
+    - mariadb
+
+checker:
+  script_path: checker/lamp.py
+  # Upper bound of how long the Checker Script takes to run (for a single team)
+  # Used for scheduling checks within a tick, executions taking longer *may* get terminated
+  max_duration: 60
+  debian_packages:
+    - python3-requests
+  pip_packages: []
